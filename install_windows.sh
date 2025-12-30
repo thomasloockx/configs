@@ -24,6 +24,17 @@ if [ "$SYMLINKS_ONLY" = false ]; then
     powershell -Command "Start-Process powershell -Verb RunAs -Wait -ArgumentList '-Command choco install vim tmux wezterm -y'"
 fi
 
+# Download standalone tools to ~/bin
+echo "Downloading standalone tools..."
+mkdir -p "$HOME/bin"
+
+if [ ! -f "$HOME/bin/viu.exe" ]; then
+    echo "Downloading viu..."
+    curl -L -o "$HOME/bin/viu.exe" "https://github.com/atanunq/viu/releases/download/v1.6.1/viu-x86_64-pc-windows-msvc.exe"
+else
+    echo "viu.exe already exists, skipping download"
+fi
+
 # Create symlinks for configuration files
 echo "Creating symlinks..."
 
@@ -43,6 +54,6 @@ create_symlink() {
 create_symlink "$SCRIPT_DIR/vim/vimrc" "$HOME/.vimrc"
 create_symlink "$SCRIPT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
 create_symlink "$SCRIPT_DIR/wezterm/wezterm.lua" "$HOME/.wezterm.lua"
-create_symlink "$SCRIPT_DIR/zshrc/zshrc" "$HOME/.zshrc"
+create_symlink "$SCRIPT_DIR/ohmyzsh/zshrc" "$HOME/.zshrc"
 
 echo "Done!"

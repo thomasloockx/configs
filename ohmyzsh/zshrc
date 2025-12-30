@@ -1,0 +1,47 @@
+# PATH and environment variables
+
+export PATH=$PATH:"$HOME/bin"
+export PATH=$PATH:"C:/Users/AIM/.vscode/extensions/ms-vscode.cpptools-1.25.3-win32-x64/debugAdapters/vsdbg/bin"
+export PATH=$PATH:"$HOME/.opencode/bin"
+export PATH=$PATH:"$HOME/.cargo/bin"
+
+export EDITOR=vim
+
+# Custom aliases
+
+alias claude-yolo="claude --dangerously-skip-permissions"
+alias codex-yolo="codex --dangerously-bypass-approvals-and-sandbox"
+alias amp-yolo="amp --dangerously-allow-all"
+alias gbf="git branch | fzf | xargs git checkout"
+
+# Custom functions
+
+# Show ShareX screenshot folder
+sharex_folder() {
+  local sharex_dir="$HOME/Documents/ShareX/Screenshots"
+  if [[ -d "$sharex_dir" ]]; then
+    echo "$sharex_dir"
+  else
+    echo "ShareX folder not found at: $sharex_dir"
+  fi
+}
+
+# Show most recent ShareX screenshot folder
+last_sharex_folder() {
+  local sharex_dir="$HOME/Documents/ShareX/Screenshots"
+  if [[ -d "$sharex_dir" ]]; then
+    ls -td "$sharex_dir"/*/ 2>/dev/null | head -1
+  else
+    echo "ShareX folder not found at: $sharex_dir"
+  fi
+}
+
+# Get the most recent screenshot
+last_screenshot() {
+  local sharex_dir="$HOME/Documents/ShareX/Screenshots"
+  if [[ -d "$sharex_dir" ]]; then
+    find "$sharex_dir" -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" \) -printf '%T@\t%p\n' 2>/dev/null | sort -nr | head -1 | cut -f2
+  else
+    echo "ShareX folder not found at: $sharex_dir"
+  fi
+}
