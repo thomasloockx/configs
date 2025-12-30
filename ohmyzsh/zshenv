@@ -1,0 +1,2 @@
+# Skip bash git-completion (causes "obsolete script" error in zsh)
+export WINELOADERNOEXEC=1
