@@ -4,6 +4,13 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
+# Vi mode
+set -o vi
+bindkey "^R" history-incremental-search-backward
+
+# Custom prompt
+PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} "
+
 # PATH and environment variables
 
 export PATH=$PATH:"$HOME/bin"
@@ -51,3 +58,6 @@ last_screenshot() {
     echo "ShareX folder not found at: $sharex_dir"
   fi
 }
+
+# Source machine-specific configs if they exist
+[[ -f ~/.rayscaper_dev.zsh ]] && source ~/.rayscaper_dev.zsh

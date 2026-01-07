@@ -8,6 +8,35 @@ config.font = wezterm.font 'MesloLGS NF'
 local gitbash = {"C:\\Program Files\\Git\\bin\\bash.exe", "-i", "-l"}
 config.default_prog = gitbash
 
+-- Launch menu items for different terminal types
+config.launch_menu = {
+    {
+        label = 'Git Bash (Default)',
+        args = {"C:\\Program Files\\Git\\bin\\bash.exe", "-i", "-l"},
+    },
+    {
+        label = 'PowerShell',
+        args = {'powershell.exe', '-NoLogo'},
+    },
+    {
+        label = 'Command Prompt',
+        args = {'cmd.exe'},
+    },
+    {
+        label = 'WSL',
+        args = {'wsl.exe'},
+    },
+    {
+        label = 'Developer Powershell for VS 2022',
+        args = {
+          'powershell.exe',
+          '-noe',
+          '-c',
+          '& \"C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/Launch-VsDevShell.ps1\"'
+        },
+    }
+}
+
 -- Configure like tmux.
 config.leader = { key = 'a', mods = 'CTRL' }
 config.keys = {
@@ -65,6 +94,13 @@ config.keys = {
         key = "Space",
         mods = "LEADER",
         action = wezterm.action.RotatePanes "Clockwise"
+    },
+    {
+        key = "t",
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.ShowLauncherArgs {
+            flags = 'FUZZY|TABS|LAUNCH_MENU_ITEMS',
+        },
     },
 }
 
