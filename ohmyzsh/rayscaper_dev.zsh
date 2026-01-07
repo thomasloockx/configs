@@ -1,7 +1,5 @@
 # Rayscaper development environment
 
-alias vim="nvim"
-
 # Rayscaper project shortcuts
 alias cdrsdev="cd ~/dev/Rayscaper"
 alias cdrsappdata="cd \$APPDATA/Rayscaper/"

@@ -26,6 +26,7 @@ alias claude-yolo="claude --dangerously-skip-permissions"
 alias codex-yolo="codex --dangerously-bypass-approvals-and-sandbox"
 alias amp-yolo="amp --dangerously-allow-all"
 alias gbf="git branch | fzf | xargs git checkout"
+alias vim="nvim"
 
 # Custom functions
 
