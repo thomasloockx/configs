@@ -3,7 +3,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.color_scheme = 'Solarized Darcula (Gogh)'
-config.font = wezterm.font('JetBrains Mono', {weight='Regular', style='Normal'})
+config.font = wezterm.font('MesloLGS NF', {weight='Regular', style='Normal'})
 
 local gitbash = {"C:\\Program Files\\Git\\bin\\bash.exe", "-i", "-l"}
 config.default_prog = gitbash
