@@ -55,5 +55,6 @@ create_symlink "$SCRIPT_DIR/vim/vimrc" "$HOME/.vimrc"
 create_symlink "$SCRIPT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
 create_symlink "$SCRIPT_DIR/wezterm/wezterm.lua" "$HOME/.wezterm.lua"
 create_symlink "$SCRIPT_DIR/ohmyzsh/zshrc" "$HOME/.zshrc"
+create_symlink "$SCRIPT_DIR/ohmyzsh/rayscaper_dev.zsh" "$HOME/.rayscaper_dev.zsh"
 
 echo "Done!"
