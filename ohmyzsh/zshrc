@@ -6,7 +6,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Vi mode
 set -o vi
-bindkey "^R" history-incremental-search-backward
+bindkey -v "^R" history-incremental-search-backward
 
 # Custom prompt
 PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} "
