@@ -21,7 +21,7 @@ done
 # Install tools via Chocolatey in elevated PowerShell
 if [ "$SYMLINKS_ONLY" = false ]; then
     echo "Installing tools via Chocolatey (requires admin)..."
-    powershell -Command "Start-Process powershell -Verb RunAs -Wait -ArgumentList '-Command choco install vim tmux wezterm -y'"
+    powershell -Command "Start-Process powershell -Verb RunAs -Wait -ArgumentList '-Command choco install neovim vim wezterm --yes'"
 fi
 
 # Download standalone tools to ~/bin
