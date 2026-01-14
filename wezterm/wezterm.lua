@@ -42,11 +42,11 @@ config.leader = { key = 'a', mods = 'CTRL' }
 config.keys = {
 	{
 	    key    = "\"",
-		mods   = "LEADER|SHIFT",
+		mods   = "LEADER",
 	    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
 	},
 	{
-	    key    = "|",
+	    key    = "\\",
 		mods   = "LEADER|SHIFT",
 	    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
 	},
