@@ -62,3 +62,6 @@ last_screenshot() {
 
 # Source machine-specific configs if they exist
 [[ -f ~/.rayscaper_dev.zsh ]] && source ~/.rayscaper_dev.zsh
+
+# Source AIM log management functions
+[[ -f ~/configs/ohmyzsh/aim_functions.zsh ]] && source ~/configs/ohmyzsh/aim_functions.zsh
