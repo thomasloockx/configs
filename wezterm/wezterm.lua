@@ -32,7 +32,7 @@ config.launch_menu = {
           'powershell.exe',
           '-noe',
           '-c',
-          '& \"C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/Launch-VsDevShell.ps1\"'
+          '& "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/Launch-VsDevShell.ps1"'
         },
     }
 }
@@ -42,11 +42,11 @@ config.leader = { key = 'a', mods = 'CTRL' }
 config.keys = {
 	{
 	    key    = "\"",
-		mods   = "LEADER|SHIFT",
+		mods   = "LEADER",
 	    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
 	},
 	{
-	    key    = "|",
+	    key    = "\\",
 		mods   = "LEADER|SHIFT",
 	    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
 	},

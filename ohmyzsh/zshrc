@@ -60,6 +60,20 @@ last_screenshot() {
   fi
 }
 
+# WezTerm OSC 7 - report current directory for split-in-same-dir
+__wezterm_osc7() {
+  # Convert MSYS/Git Bash path to Windows path for WezTerm
+  local win_pwd
+  if command -v cygpath &> /dev/null; then
+    win_pwd=$(cygpath -w "$PWD")
+  else
+    # Manual conversion: /c/Users/... -> C:/Users/...
+    win_pwd=$(echo "$PWD" | sed 's|^/\([a-zA-Z]\)/|\1:/|')
+  fi
+  printf '\033]7;file://localhost/%s\033\\' "$win_pwd"
+}
+precmd_functions+=(__wezterm_osc7)
+
 # Source machine-specific configs if they exist
 [[ -f ~/.rayscaper_dev.zsh ]] && source ~/.rayscaper_dev.zsh
 
