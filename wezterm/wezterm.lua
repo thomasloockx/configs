@@ -2,6 +2,39 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
+-- Format tab title to show: "[dir] process"
+wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
+  local pane = tab.active_pane
+
+  -- Get last directory component from cwd
+  local dir_name = ""
+  local cwd = pane.current_working_dir
+  if cwd then
+    local path = cwd.file_path or tostring(cwd)
+    dir_name = path:match("([^/\\]+)[/\\]?$") or path
+  end
+
+  -- Get process name (strip path and .exe)
+  local proc_name = ""
+  local proc = pane.foreground_process_name
+  if proc and proc ~= "" then
+    proc_name = proc:match("([^/\\]+)$") or proc
+    proc_name = proc_name:gsub("%.exe$", "")
+  end
+
+  -- Build title: index: [dir] process
+  local idx = tab.tab_index + 1
+  if dir_name ~= "" and proc_name ~= "" then
+    return string.format(" %d: [%s] %s ", idx, dir_name, proc_name)
+  elseif dir_name ~= "" then
+    return string.format(" %d: [%s] ", idx, dir_name)
+  elseif proc_name ~= "" then
+    return string.format(" %d: %s ", idx, proc_name)
+  else
+    return string.format(" %d ", idx)
+  end
+end)
+
 config.color_scheme = 'Solarized Darcula (Gogh)'
 config.font = wezterm.font('JetBrains Mono', {weight='Regular', style='Normal'})
 
