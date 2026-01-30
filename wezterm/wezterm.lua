@@ -25,9 +25,9 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
   -- Build title: index: [dir] process
   local idx = tab.tab_index + 1
   if dir_name ~= "" and proc_name ~= "" then
-    return string.format(" %d: [%s] %s ", idx, dir_name, proc_name)
+    return string.format(" %d: %s | %s ", idx, dir_name, proc_name)
   elseif dir_name ~= "" then
-    return string.format(" %d: [%s] ", idx, dir_name)
+    return string.format(" %d: %s ", idx, dir_name)
   elseif proc_name ~= "" then
     return string.format(" %d: %s ", idx, proc_name)
   else
