@@ -13,5 +13,6 @@ return {
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },
     { "<leader>fp", "<cmd>Telescope git_files<cr>", desc = "Git files" },
     { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+    { "<leader>fs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
   },
 }

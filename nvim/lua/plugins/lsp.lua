@@ -1,4 +1,10 @@
 return {
+  -- LSP progress indicator
+  {
+    "j-hui/fidget.nvim",
+    opts = {},
+  },
+
   -- Mason: LSP server installer
   {
     "williamboman/mason.nvim",
@@ -47,6 +53,10 @@ return {
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = args.buf, desc = "Code Action" })
           vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = args.buf, desc = "Rename Symbol" })
           vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format({ async = true }) end, { buffer = args.buf, desc = "Format Buffer" })
+          -- Call hierarchy
+          vim.keymap.set("n", "<leader>ci", vim.lsp.buf.incoming_calls, { buffer = args.buf, desc = "Incoming Calls" })
+          -- Clangd specific
+          vim.keymap.set("n", "<leader>cs", "<cmd>LspClangdSwitchSourceHeader<cr>", { buffer = args.buf, desc = "Switch Header/Source" })
           -- Diagnostics
           vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { buffer = args.buf, desc = "Line Diagnostics" })
           vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
