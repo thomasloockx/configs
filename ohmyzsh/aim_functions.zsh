@@ -217,6 +217,26 @@ aimapp() {
     _aimlog_exec "$action" "$full_path"
 }
 
+# Show open GitLab merge requests authored by the authenticated user.
+open_mrs() {
+    local uv_cmd
+    local script_path
+
+    uv_cmd=$(command -v uv || true)
+    if [[ -z "$uv_cmd" ]]; then
+        echo "Error: uv not found in PATH. Install it from https://docs.astral.sh/uv/" >&2
+        return 1
+    fi
+
+    script_path="$HOME/configs/scripts/open_mrs.py"
+    if [[ ! -f "$script_path" ]]; then
+        echo "Error: script not found: $script_path" >&2
+        return 1
+    fi
+
+    "$uv_cmd" run "$script_path" "$@"
+}
+
 # Zsh completions for aimlog and aimapp
 _aimlog_actions=(tail tail100 head cat open edit less cd path)
 
