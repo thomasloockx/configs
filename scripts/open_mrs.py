@@ -19,6 +19,17 @@ STATUS_LABELS = {
     "skipped": "SKIP",
 }
 
+STATUS_ICONS = {
+    "success": "✅",
+    "failed": "❌",
+    "running": "🏃",
+    "pending": "⏳",
+    "created": "⏳",
+    "canceled": "⏭️",
+    "skipped": "⏭️",
+    "unknown": "❔",
+}
+
 
 def run_cmd(args: Iterable[str]) -> str:
     result = subprocess.run(list(args), capture_output=True, text=True)
@@ -138,12 +149,14 @@ def main() -> int:
         print(json.dumps(results, indent=2))
         return 0
 
-    print(f"{'Status':<6} {'MR':<8} Title")
-    print(f"{'------':<6} {'--':<8} -----")
+    print(f"{'Status':<9} {'MR':<8} Title")
+    print(f"{'---------':<9} {'--':<8} -----")
 
     for result in results:
+        icon = STATUS_ICONS.get(result["pipeline_status"], STATUS_ICONS["unknown"])
+        display_status = f"{icon} {result['status_label']}"
         print(
-            f"{result['status_label']:<6} {result['short']:<8} "
+            f"{display_status:<9} {result['short']:<8} "
             f"{result['title']} ({result['web_url']})"
         )
 
