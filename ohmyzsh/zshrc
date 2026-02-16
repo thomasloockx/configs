@@ -18,6 +18,7 @@ export PATH=$PATH:"$HOME/.local/bin"
 export PATH=$PATH:"C:/Users/AIM/.vscode/extensions/ms-vscode.cpptools-1.25.3-win32-x64/debugAdapters/vsdbg/bin"
 export PATH=$PATH:"$HOME/.opencode/bin"
 export PATH=$PATH:"$HOME/.cargo/bin"
+export PATH=$PATH:"/c/Program Files/Tailscale"
 
 export EDITOR=vim
 
