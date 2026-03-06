@@ -246,3 +246,8 @@ _aimlog() {
 
 compdef _aimlog aimlog
 compdef _aimlog aimapp
+
+# Play media files with VLC
+vlc() {
+    "/c/Program Files/VideoLAN/VLC/vlc.exe" "$@" &>/dev/null &disown
+}
