@@ -4,7 +4,7 @@ vim.g.maplocalleader = "\\"
 
 -- Editor options
 vim.opt.number = true         -- Show line numbers
-vim.opt.relativenumber = true -- Show relative line numbers
+vim.opt.relativenumber = false -- Disable relative line numbers
 vim.opt.syntax = "on"         -- Enable syntax highlighting
 vim.opt.termguicolors = true  -- Enable true colors
 

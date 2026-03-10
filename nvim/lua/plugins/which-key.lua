@@ -11,6 +11,7 @@ return {
       { "<leader>f", group = "find/files" },
       { "<leader>g", group = "git" },
       { "<leader>c", group = "code" },
+      { "<leader>s", group = "symbols" },
       -- { "<leader>b", group = "buffer" },
     },
   },

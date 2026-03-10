@@ -5,6 +5,11 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
+  opts = {
+    defaults = {
+      path_display = { "truncate" }, -- Truncate from the start, keeping the filename visible
+    },
+  },
   keys = {
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },

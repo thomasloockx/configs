@@ -57,6 +57,9 @@ return {
           vim.keymap.set("n", "<leader>ci", vim.lsp.buf.incoming_calls, { buffer = args.buf, desc = "Incoming Calls" })
           -- Clangd specific
           vim.keymap.set("n", "<leader>cs", "<cmd>LspClangdSwitchSourceHeader<cr>", { buffer = args.buf, desc = "Switch Header/Source" })
+          -- Symbol search (via Telescope)
+          vim.keymap.set("n", "<leader>ss", "<cmd>Telescope lsp_document_symbols<cr>", { buffer = args.buf, desc = "Document Symbols" })
+          vim.keymap.set("n", "<leader>sS", "<cmd>Telescope lsp_workspace_symbols<cr>", { buffer = args.buf, desc = "Workspace Symbols" })
           -- Diagnostics
           vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { buffer = args.buf, desc = "Line Diagnostics" })
           vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
