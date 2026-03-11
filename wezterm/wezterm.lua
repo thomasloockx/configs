@@ -35,7 +35,7 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
   end
 end)
 
-config.color_scheme = 'Solarized Darcula (Gogh)'
+config.color_scheme = 'Tokyo Night Storm'
 config.font = wezterm.font('JetBrains Mono', {weight='Regular', style='Normal'})
 
 local gitbash = {"C:\\Program Files\\Git\\bin\\bash.exe", "-i", "-l"}
