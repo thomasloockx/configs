@@ -247,6 +247,24 @@ _aimlog() {
 compdef _aimlog aimlog
 compdef _aimlog aimapp
 
+# Show GitLab issues assigned to the authenticated user, with clickable links.
+my_issues() {
+    if ! command -v glab &>/dev/null; then
+        echo "Error: glab not found in PATH." >&2
+        return 1
+    fi
+
+    if ! command -v jq &>/dev/null; then
+        glab issue list --assignee=@me "$@"
+        return
+    fi
+
+    glab issue list --assignee=@me -O json "$@" | jq -r '
+        .[] |
+        "\u001b]8;;\(.web_url)\u001b\\\u001b[36m#\(.iid)\u001b[0m\t\(.title)\t\u001b[33m\(.labels // [] | join(", "))\u001b[0m"
+    ' | column -t -s $'\t'
+}
+
 # Play media files with VLC
 vlc() {
     "/c/Program Files/VideoLAN/VLC/vlc.exe" "$@" &>/dev/null &disown
