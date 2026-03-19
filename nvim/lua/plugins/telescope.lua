@@ -19,5 +19,6 @@ return {
     { "<leader>fp", "<cmd>Telescope git_files<cr>", desc = "Git files" },
     { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
     { "<leader>fs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
+    { "<leader>fw", "<cmd>Telescope grep_string<cr>", desc = "Grep word under cursor" },
   },
 }

@@ -8,6 +8,11 @@ vim.opt.relativenumber = false -- Disable relative line numbers
 vim.opt.syntax = "on"         -- Enable syntax highlighting
 vim.opt.termguicolors = true  -- Enable true colors
 
+-- Nicer diffs
+vim.opt.diffopt:append("algorithm:histogram")
+vim.opt.diffopt:append("linematch:60")
+vim.opt.diffopt:append("indent-heuristic")
+
 -- Indentation (4 spaces, no tabs)
 vim.opt.expandtab = true      -- Use spaces instead of tabs
 vim.opt.tabstop = 4           -- Tab displays as 4 spaces
