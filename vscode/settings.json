@@ -1,0 +1,21 @@
+{
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "standardRuby.commandPath": "${userHome}/.gem/ruby/2.7.0/bin/standardrb",
+    "vim.handleKeys": {
+        "<C-p>": false
+    },
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "'JetBrains Mono', Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "workbench.colorTheme": "Tokyo Night",
+    "workbench.tree.indent": 16,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.list.rowHeight": 24,
+    "workbench.iconTheme": "material-icon-theme",
+    "window.zoomLevel": 0.5,
+    "clangd.path": "c:\\Users\\Thomas\\AppData\\Roaming\\Code\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\21.1.8\\clangd_21.1.8\\bin\\clangd.exe",
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    }
+}

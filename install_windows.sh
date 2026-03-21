@@ -75,4 +75,15 @@ create_symlink "$SCRIPT_DIR/wezterm/wezterm.lua" "$HOME/.config/wezterm/wezterm.
 create_symlink "$SCRIPT_DIR/ohmyzsh/zshrc" "$HOME/.zshrc"
 create_symlink "$SCRIPT_DIR/ohmyzsh/rayscaper_dev.zsh" "$HOME/.rayscaper_dev.zsh"
 
+mkdir -p "$HOME/AppData/Roaming/Code/User"
+create_symlink "$SCRIPT_DIR/vscode/settings.json" "$HOME/AppData/Roaming/Code/User/settings.json"
+
+# Install VS Code extensions
+if [ "$SYMLINKS_ONLY" = false ] && command -v code &>/dev/null; then
+  echo "Installing VS Code extensions..."
+  while IFS= read -r ext; do
+    code --install-extension "$ext" --force 2>/dev/null
+  done <"$SCRIPT_DIR/vscode/extensions.txt"
+fi
+
 echo "Done!"
