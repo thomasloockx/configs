@@ -21,7 +21,7 @@ done
 # Install tools via Chocolatey in elevated PowerShell
 if [ "$SYMLINKS_ONLY" = false ]; then
   echo "Installing tools via Chocolatey (requires admin)..."
-  powershell -Command "Start-Process powershell -Verb RunAs -Wait -ArgumentList '-Command choco install difftastic fzf neovim vim wezterm --yes'"
+  powershell -Command "Start-Process powershell -Verb RunAs -Wait -ArgumentList '-Command choco install difftastic fzf neovim vim wezterm jetbrainsmono --yes'"
 fi
 
 # Download standalone tools to ~/bin
@@ -76,7 +76,8 @@ create_symlink "$SCRIPT_DIR/ohmyzsh/zshrc" "$HOME/.zshrc"
 create_symlink "$SCRIPT_DIR/ohmyzsh/rayscaper_dev.zsh" "$HOME/.rayscaper_dev.zsh"
 
 mkdir -p "$HOME/AppData/Roaming/Code/User"
-create_symlink "$SCRIPT_DIR/vscode/settings.json" "$HOME/AppData/Roaming/Code/User/settings.json"
+WIN_VSCODE_SETTINGS="$(cygpath -w "$SCRIPT_DIR/vscode/settings.json")"
+powershell -Command "New-Item -ItemType HardLink -Path '$env:USERPROFILE\AppData\Roaming\Code\User\settings.json' -Target '$WIN_VSCODE_SETTINGS' -Force"
 
 # Install VS Code extensions
 if [ "$SYMLINKS_ONLY" = false ] && command -v code &>/dev/null; then

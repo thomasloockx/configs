@@ -14,7 +14,7 @@
     "workbench.list.rowHeight": 24,
     "workbench.iconTheme": "material-icon-theme",
     "window.zoomLevel": 0.5,
-    "clangd.path": "c:\\Users\\Thomas\\AppData\\Roaming\\Code\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\21.1.8\\clangd_21.1.8\\bin\\clangd.exe",
+    "clangd.path": "C:\\SDK\\llvm-21.1.0\\bin\\clangd.exe",
     "[markdown]": {
         "editor.defaultFormatter": "yzhang.markdown-all-in-one"
     }
