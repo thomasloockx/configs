@@ -15,10 +15,14 @@ PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) %{$fg[cyan]%}%c%{$res
 
 export PATH=$PATH:"$HOME/bin"
 export PATH=$PATH:"$HOME/.local/bin"
-export PATH=$PATH:"C:/Users/AIM/.vscode/extensions/ms-vscode.cpptools-1.25.3-win32-x64/debugAdapters/vsdbg/bin"
 export PATH=$PATH:"$HOME/.opencode/bin"
 export PATH=$PATH:"$HOME/.cargo/bin"
-export PATH=$PATH:"/c/Program Files/Tailscale"
+
+if [[ "$OS" == "Windows_NT" ]]; then
+  export PATH=$PATH:"C:/Users/AIM/.vscode/extensions/ms-vscode.cpptools-1.25.3-win32-x64/debugAdapters/vsdbg/bin"
+  export PATH=$PATH:"$HOME/AppData/Local/Programs/Microsoft VS Code/bin"
+  export PATH=$PATH:"/c/Program Files/Tailscale"
+fi
 
 export EDITOR=vim
 
