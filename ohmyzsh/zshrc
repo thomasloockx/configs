@@ -85,3 +85,4 @@ precmd_functions+=(__wezterm_osc7)
 
 # Source AIM log management functions
 [[ -f ~/configs/ohmyzsh/aim_functions.zsh ]] && source ~/configs/ohmyzsh/aim_functions.zsh
+export PATH="/c/Users/AIM/AppData/Roaming/npm:$PATH"
