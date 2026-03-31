@@ -22,6 +22,7 @@ if [[ "$OS" == "Windows_NT" ]]; then
   export PATH=$PATH:"C:/Users/AIM/.vscode/extensions/ms-vscode.cpptools-1.25.3-win32-x64/debugAdapters/vsdbg/bin"
   export PATH=$PATH:"$HOME/AppData/Local/Programs/Microsoft VS Code/bin"
   export PATH=$PATH:"/c/Program Files/Tailscale"
+  export PATH=$PATH:"/c/tools/neovim/nvim-win64/bin"
 fi
 
 export EDITOR=vim
