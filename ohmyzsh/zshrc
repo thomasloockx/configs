@@ -10,6 +10,11 @@ bindkey -v "^R" history-incremental-search-backward
 
 # Custom prompt
 PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} "
+setopt PROMPT_SUBST
+direnv_prompt_indicator() {
+  [[ -n "$DIRENV_DIR" ]] && print -n '%F{yellow}direnv%f'
+}
+RPROMPT='$(direnv_prompt_indicator)'
 
 # PATH and environment variables
 
@@ -87,3 +92,6 @@ precmd_functions+=(__wezterm_osc7)
 # Source AIM log management functions
 [[ -f ~/configs/ohmyzsh/aim_functions.zsh ]] && source ~/configs/ohmyzsh/aim_functions.zsh
 export PATH="/c/Users/AIM/AppData/Roaming/npm:$PATH"
+
+# Load directory-specific environments
+eval "$(direnv hook zsh)"
