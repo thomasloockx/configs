@@ -42,7 +42,7 @@ alias vim="nvim"
 
 # Custom functions
 
-# Create/open today's daily note. Usage: new_daily_note --dir DIR
+# Create a fresh daily note. Usage: new_daily_note --dir DIR
 new_daily_note() {
   local script_path="$HOME/configs/scripts/new_daily_note.sh"
   if [[ ! -x "$script_path" ]]; then

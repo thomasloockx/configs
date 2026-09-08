@@ -5,15 +5,15 @@ usage() {
   cat <<EOF
 Usage: $(basename "$0") --dir DIR [--editor EDITOR]
 
-Create today's daily note (if it does not already exist) and open it.
+Create a fresh daily note for today and open it.
 
 Options:
   --dir DIR        Directory to create/open the note in (required)
   --editor EDITOR  Editor to open the note with (default: \$EDITOR, then vim)
   -h, --help       Show this help
 
-The note is named daily_YY_MM_DD.md. If today's file already exists, it is
-opened as-is without changing its contents.
+The first note is named daily_YY_MM_DD.md. Additional notes use _2, _3, etc.
+Existing notes are never overwritten.
 EOF
 }
 
@@ -70,16 +70,16 @@ fi
 mkdir -p "$note_dir"
 note_dir="$(cd "$note_dir" && pwd)"
 
-filename="daily_$(date +%y_%m_%d).md"
-filepath="${note_dir}/${filename}"
+stem="daily_$(date +%y_%m_%d)"
+filepath="${note_dir}/${stem}.md"
 pretty_date="$(date +"%A, %B %d, %Y")"
 
-if [[ -e "$filepath" && ! -f "$filepath" ]]; then
-  die "path exists but is not a regular file: $filepath"
-fi
-
-if [[ ! -f "$filepath" ]]; then
-  printf '# Daily note — %s\n\n' "$pretty_date" >"$filepath"
-fi
+# Reserve the filename without clobbering another invocation's note.
+number=2
+while ! (set -o noclobber; printf '# Daily note — %s\n\n' "$pretty_date" >"$filepath") 2>/dev/null; do
+  [[ -e "$filepath" || -L "$filepath" ]] || die "could not create note: $filepath"
+  filepath="${note_dir}/${stem}_${number}.md"
+  number=$((number + 1))
+done
 
 exec "$editor" "$filepath"

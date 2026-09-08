@@ -12,8 +12,9 @@ Options:
   --editor EDITOR  Editor to open the note with (default: \$EDITOR, then vim)
   -h, --help       Show this help
 
-Searches for daily_YY_MM_DD.md in DIR and its subdirectories. A single match
-is opened directly; multiple matches show a numbered picker. No note is created.
+Searches for daily_YY_MM_DD.md and numbered variants (_2, _3, etc.) in DIR
+and its subdirectories. A single match is opened directly; multiple matches
+show a numbered picker. No note is created.
 EOF
 }
 
@@ -69,13 +70,19 @@ fi
 
 [[ -d "$note_dir" ]] || die "directory does not exist: $note_dir"
 note_dir="$(cd "$note_dir" && pwd)"
-filename="daily_$(date +%y_%m_%d).md"
+stem="daily_$(date +%y_%m_%d)"
 
 # Preserve paths containing whitespace and report search failures before editing.
 match_file="$(mktemp)"
 trap 'rm -f "$match_file"' EXIT
-find "$note_dir" -type f -name "$filename" -print0 >"$match_file" || die "could not search $note_dir"
-mapfile -d '' -t notes < <(sort -z "$match_file")
+find "$note_dir" -type f \( -name "$stem.md" -o -name "${stem}_[0-9]*.md" \) -print0 >"$match_file" || die "could not search $note_dir"
+notes=()
+while IFS= read -r -d '' candidate; do
+  filename="${candidate##*/}"
+  if [[ "$filename" == "$stem.md" || "$filename" =~ ^${stem}_[0-9]+\.md$ ]]; then
+    notes+=("$candidate")
+  fi
+done < <(sort -zV "$match_file")
 rm -f "$match_file"
 trap - EXIT
 
