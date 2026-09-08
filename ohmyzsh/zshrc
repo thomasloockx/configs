@@ -42,6 +42,27 @@ alias vim="nvim"
 
 # Custom functions
 
+# Create/open today's daily note. Usage: new_daily_note --dir DIR
+new_daily_note() {
+  local script_path="$HOME/configs/scripts/new_daily_note.sh"
+  if [[ ! -x "$script_path" ]]; then
+    echo "Error: script not found: $script_path" >&2
+    return 1
+  fi
+  "$script_path" "$@"
+}
+
+# Edit today's daily note, with a picker for multiple matches.
+# Usage: edit_daily_note --dir DIR
+edit_daily_note() {
+  local script_path="$HOME/configs/scripts/edit_daily_note.sh"
+  if [[ ! -x "$script_path" ]]; then
+    echo "Error: script not found: $script_path" >&2
+    return 1
+  fi
+  "$script_path" "$@"
+}
+
 # Show ShareX screenshot folder
 sharex_folder() {
   local sharex_dir="$HOME/Documents/ShareX/Screenshots"
