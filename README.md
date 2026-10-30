@@ -8,6 +8,7 @@ Configuration I cannot live without
 - `nvim/` - Neovim configuration (lazy.nvim based)
 - `wezterm/wezterm.lua` - WezTerm terminal configuration
 - `ohmyzsh/zshrc` - Zsh configuration (with modular config in `ohmyzsh/modules/`)
+- `herdr-app/` - Herdr app keys, settings, programs and the `tmux-prefix` mod
 - `install_windows.sh` - Install tools via Chocolatey and create symlinks
 
 ## Neovim Configuration

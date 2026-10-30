@@ -55,5 +55,9 @@ create_symlink "$SCRIPT_DIR/wezterm/wezterm.lua" "$HOME/.config/wezterm/wezterm.
 create_symlink "$SCRIPT_DIR/nvim" "$HOME/.config/nvim"
 create_symlink "$SCRIPT_DIR/ohmyzsh/zshrc" "$HOME/.zshrc"
 create_symlink "$SCRIPT_DIR/ohmyzsh/zshenv" "$HOME/.zshenv"
+create_symlink "$SCRIPT_DIR/herdr-app/keys.json" "$HOME/.config/herdr-app/keys.json"
+create_symlink "$SCRIPT_DIR/herdr-app/settings.json" "$HOME/.config/herdr-app/settings.json"
+create_symlink "$SCRIPT_DIR/herdr-app/programs.json" "$HOME/.config/herdr-app/programs.json"
+create_symlink "$SCRIPT_DIR/herdr-app/mods/tmux-prefix" "$HOME/.config/herdr-app/mods/tmux-prefix"
 
 echo "Done!"
