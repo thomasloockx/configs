@@ -8,7 +8,11 @@ Configuration I cannot live without
 - `nvim/` - Neovim configuration (lazy.nvim based)
 - `wezterm/wezterm.lua` - WezTerm terminal configuration
 - `ohmyzsh/zshrc` - Zsh configuration (with modular config in `ohmyzsh/modules/`)
-- `herdr-app/` - Herdr app keys, settings, programs and the `tmux-prefix` mod
+- `herdr-app/` - Herdr app keys, settings, programs, mods and the `my-main` layout
+  - `mods/tmux-prefix` - tmux-style prefix key popup
+  - `mods/gh-issues` - GitHub Issues side panel for the focused terminal's repo: label filters, and buttons to start an agent on an issue (in a new tab or a fresh worktree). `agents.json` picks the agent per machine.
+  - `mods/my-tabs` - Herdr's tab bar with an Issues button (copied, not symlinked: Herdr won't draw icons from a symlinked mod)
+  - `layouts/my-main.json` - Herdr's main layout with `my-tabs` and the Issues panel
 - `install_windows.sh` - Install tools via Chocolatey and create symlinks
 
 ## Neovim Configuration

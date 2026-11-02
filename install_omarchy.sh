@@ -59,5 +59,23 @@ create_symlink "$SCRIPT_DIR/herdr-app/keys.json" "$HOME/.config/herdr-app/keys.j
 create_symlink "$SCRIPT_DIR/herdr-app/settings.json" "$HOME/.config/herdr-app/settings.json"
 create_symlink "$SCRIPT_DIR/herdr-app/programs.json" "$HOME/.config/herdr-app/programs.json"
 create_symlink "$SCRIPT_DIR/herdr-app/mods/tmux-prefix" "$HOME/.config/herdr-app/mods/tmux-prefix"
+create_symlink "$SCRIPT_DIR/herdr-app/mods/gh-issues" "$HOME/.config/herdr-app/mods/gh-issues"
+create_symlink "$SCRIPT_DIR/herdr-app/layouts/my-main.json" "$HOME/.config/herdr-app/layouts/my-main.json"
+
+# Herdr doesn't draw SVG icons from a symlinked mod folder, so my-tabs is copied, not linked.
+# Edit it in this repo and run this script again to update the copy.
+copy_dir() {
+  local source="$1"
+  local dest="$2"
+
+  if [ -L "$dest" ]; then
+    rm -f "$dest"
+  fi
+  mkdir -p "$dest"
+  cp -r "$source/." "$dest/"
+  echo "Copied: $source -> $dest"
+}
+
+copy_dir "$SCRIPT_DIR/herdr-app/mods/my-tabs" "$HOME/.config/herdr-app/mods/my-tabs"
 
 echo "Done!"

@@ -1,0 +1,4 @@
+{
+  "//": "Which agent the Agent/Worktree buttons start, per machine (null key \"\" = this computer). Machines not listed use the first installed agent Herdr detects.",
+  "tl-rack": { "name": "Claude Code", "run": ["C:\\Users\\AIM\\.local\\bin\\claude.exe"] }
+}
