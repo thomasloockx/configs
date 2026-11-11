@@ -21,7 +21,20 @@ done
 # Install tools via Chocolatey in elevated PowerShell
 if [ "$SYMLINKS_ONLY" = false ]; then
   echo "Installing tools via Chocolatey (requires admin)..."
-  powershell -Command "Start-Process powershell -Verb RunAs -Wait -ArgumentList '-Command choco install difftastic fzf neovim vim wezterm jetbrainsmono --yes'"
+  powershell -Command "Start-Process powershell -Verb RunAs -Wait -ArgumentList '-Command choco install difftastic fzf gh neovim vim wezterm jetbrainsmono --yes'"
+
+  # Make a newly installed GitHub CLI available in this Git Bash session.
+  if ! command -v gh &>/dev/null && [ -x '/c/Program Files/GitHub CLI/gh.exe' ]; then
+    export PATH="/c/Program Files/GitHub CLI:$PATH"
+  fi
+
+  if ! gh dash --version &>/dev/null; then
+    echo "Installing gh-dash..."
+    gh extension install dlvhdr/gh-dash || {
+      echo "Failed to install gh-dash. Run 'gh auth login' if needed, then rerun this script."
+      exit 1
+    }
+  fi
 fi
 
 # Download standalone tools to ~/bin

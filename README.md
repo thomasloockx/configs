@@ -13,6 +13,7 @@ Configuration I cannot live without
   - `mods/gh-issues` - GitHub Issues side panel for the focused terminal's repo: label filters, and buttons to start an agent on an issue (in a new tab or a fresh worktree). `agents.json` picks the agent per machine.
   - `mods/my-tabs` - Herdr's tab bar with an Issues button (copied, not symlinked: Herdr won't draw icons from a symlinked mod)
   - `layouts/my-main.json` - Herdr's main layout with `my-tabs` and the Issues panel
+- `install_omarchy.sh` - Install tools via pacman and create symlinks
 - `install_windows.sh` - Install tools via Chocolatey and create symlinks
 
 ## Neovim Configuration
@@ -96,7 +97,15 @@ Then open Neovim and run `:Lazy sync` to install plugins.
 
 ## Installation
 
+Both setup scripts install GitHub CLI and the `gh-dash` extension (run with
+`gh dash`). If extension installation requires authentication, run `gh auth login`
+and rerun the setup script. `--symlinks-only` skips GitHub CLI and gh-dash installation.
+
 ```bash
+# Omarchy: install tools and create symlinks
+./install_omarchy.sh
+
+# Windows (Git Bash): install tools and create symlinks
 # Install tools and create symlinks
 ./install_windows.sh
 

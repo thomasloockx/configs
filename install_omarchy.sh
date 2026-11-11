@@ -21,7 +21,15 @@ done
 # Install tools via pacman
 if [ "$SYMLINKS_ONLY" = false ]; then
   echo "Installing tools via pacman..."
-  sudo pacman -S --needed --noconfirm difftastic fzf neovim vim tmux wezterm
+  sudo pacman -S --needed --noconfirm difftastic fzf github-cli neovim vim tmux wezterm || exit 1
+
+  if ! gh dash --version &>/dev/null; then
+    echo "Installing gh-dash..."
+    gh extension install dlvhdr/gh-dash || {
+      echo "Failed to install gh-dash. Run 'gh auth login' if needed, then rerun this script."
+      exit 1
+    }
+  fi
 fi
 
 # Create symlinks for configuration files
